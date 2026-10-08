@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "defaultMode": "default",
+    "allow": [
+      "Edit(/services/**)",
+      "Edit(/streaming/**)",
+      "Edit(/airflow/**)",
+      "Edit(/infra/**)",
+      "Edit(/monitoring/**)",
+      "Edit(/loadtest/**)",
+      "Edit(/docs/**)",
+      "Write(/services/**)",
+      "Write(/streaming/**)",
+      "Write(/airflow/**)",
+      "Write(/infra/**)",
+      "Write(/monitoring/**)",
+      "Write(/loadtest/**)",
+      "Write(/docs/**)"
+    ],
+    "ask": [
+      "Edit(/CLAUDE.md)",
+      "Edit(/first_read.md)",
+      "Edit(/.claude/**)",
+      "Edit(/logs/**)",
+      "Edit(/.github/**)",
+      "Edit(/.gitignore)",
+      "Write(/CLAUDE.md)",
+      "Write(/first_read.md)",
+      "Write(/.claude/**)",
+      "Write(/logs/**)",
+      "Write(/.github/**)",
+      "Write(/.gitignore)",
+      "NotebookEdit",
+      "Bash(rm *)",
+      "Bash(mv *)",
+      "Bash(cp *)",
+      "Bash(mkdir *)",
+      "PowerShell(Remove-Item *)",
+      "PowerShell(Move-Item *)",
+      "PowerShell(Copy-Item *)",
+      "PowerShell(Rename-Item *)",
+      "PowerShell(New-Item *)",
+      "PowerShell(Set-Content *)",
+      "PowerShell(Add-Content *)",
+      "PowerShell(Out-File *)"
+    ],
+    "deny": [
+      "Bash(git *)",
+      "Bash(gh *)",
+      "PowerShell(git *)",
+      "PowerShell(gh *)",
+      "Bash(ssh *)",
+      "Bash(scp *)",
+      "Bash(sftp *)",
+      "Bash(rsync *)",
+      "Bash(aws *)",
+      "Bash(ansible*)",
+      "Bash(terraform *)",
+      "Bash(kubectl *)",
+      "Bash(nc *)",
+      "Bash(telnet *)",
+      "PowerShell(ssh *)",
+      "PowerShell(scp *)",
+      "PowerShell(aws *)",
+      "PowerShell(Enter-PSSession *)",
+      "Read(**/*.pem)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/guard_bash_write.py\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/audit_edit.py\""
+          }
+        ]
+      }
+    ]
+  }
+}

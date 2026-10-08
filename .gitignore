@@ -1,0 +1,35 @@
+# 유료 강의 저작물 — 절대 커밋 금지
+강의자료/
+
+# 비밀정보
+*.pem
+*.key
+.env
+.env.*
+**/secrets/
+*credentials*
+
+# 로컬 감사 로그 (변경 내용 원본이 남아 비밀값이 섞일 수 있어 로컬에만 보관)
+change_log.md
+logs/edit_audit.jsonl
+
+# Claude Code 로컬 설정
+.claude/settings.local.json
+.claude/worktrees/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+*_venv/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Spark / 데이터 산출물
+spark-warehouse/
+checkpoint/
+*.parquet
