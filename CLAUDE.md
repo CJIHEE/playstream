@@ -42,9 +42,9 @@
 ## 프로젝트 개요
 
 - 목표: 1주 안에 포트폴리오용 **부하테스트·트러블슈팅** 실측 사례 3건 + 신기술(Kafka, Spark, Airflow, AWS, Docker) 학습
-- 학습 기준: `강의자료/` (Airflow 01~17장) — 요약은 `docs/study/lecture-index.md`. Kafka·Spark는 `C:\Users\sist\datalake\` 강의 실습 레포
+- 학습 기준: Kafka·Spark는 **`dataStream강의/` (ch0~18) 우선** — 색인 `docs/study/datastream-index.md`, 실습 코드 `C:\Users\sist\datalake\`. Airflow는 `강의자료/` (01~17장, ROADMAP Day 7 후순위) — 색인 `docs/study/lecture-index.md`
 - 데이터: 게임 이벤트 로그 (현업 actionLog 경험에서 착안한 **가상** 데이터. 회사 실데이터·스키마·코드 사용 금지)
-- 흐름: 이벤트 생성기(초당 발생량 조절) → Kafka(kafka01~03) → Spark Structured Streaming(spark01) → S3 bronze + PostgreSQL 마트 / Airflow(airflow01: 누락 검증·compaction·적재·알림) / Prometheus+Grafana
+- 흐름: 이벤트 생성기(초당 발생량 조절) → Kafka(kafka01~03) → Spark Structured Streaming(spark01~03, Yarn + HDFS) → S3 bronze + PostgreSQL 마트 / Airflow(airflow01: 누락 검증·compaction·적재·알림) / Prometheus+Grafana
 - 실행 환경: **AWS EC2** (강의 때 만든 인스턴스 재활용, 노트북은 개발·테스트만)
 - 버전: Airflow는 강의 문법과 호환되는 **2.x 최신**으로 고정 (3.x는 SLA 제거 등 차이가 있음)
 - 로드맵: `docs/ROADMAP.md`
@@ -73,6 +73,7 @@ docs/ROADMAP.md             1주 플랜
 docs/study/                 강의 색인, 학습 노트
 docs/troubleshooting/       트러블슈팅 리포트
 docs/ai-log/                AI 활용 기록
+dataStream강의/             Kafka·Spark 강의 PDF ch0~18 (읽기 전용, git 제외)
 강의자료/                   Airflow 강의 PDF (읽기 전용, git 제외)
 ```
 
@@ -111,7 +112,7 @@ docs/ai-log/                AI 활용 기록
 ### 태스크 실행 흐름
 ```
 project-planner (태스크 카드) → 사용자 승인 → 사용자: feature 브랜치 생성
-→ de-tutor / /study (사용자 학습)
+→ de-tutor / /study (사용자 학습) → 학습 체크: /study 질문 5개에 답한 뒤 구현 위임 (사용자가 생략 지시 시 생략)
 → 구현 에이전트에게 위임 (서로 다른 영역이면 병렬 실행 가능)
 → code-reviewer 점검 → 🔴 있으면 구현 에이전트가 수정 후 재점검
 → 메인 세션이 파일별 변경 전/후 공개 + pr-explainer 리뷰 가이드 → 사용자 확인

@@ -13,8 +13,9 @@ tools: Read, Grep, Glob, Edit, Write, Bash
 
 ## 기술 기준
 - 사용자의 기존 플레이북 `C:\Users\sist\datalake\git clone\datalake-ansible-playbook-season1`의 구조와 인벤토리 그룹명(kafka, spark 등)을 따른다
-- 서버 구성: NAT(bastion) → private EC2 (kafka01~03, spark01, airflow01, monitor01, loadgen01). 호스트명과 IP는 인벤토리 변수로 둔다
-- Airflow는 강의 02-2(공식 docker-compose), 16-2(CeleryExecutor) 기반으로 구성한다. 공식 파일에서 바꾼 부분마다 주석으로 이유를 적는다
+- 서버 구성: NAT(bastion) → private EC2 (kafka01~03, spark01~03, airflow01, monitor01, loadgen01). 호스트명과 IP는 인벤토리 변수로 둔다
+- Kafka·Spark·모니터링은 dataStream 강의 구성을 따른다: ch3-6 Ansible, ch4-2~4-4 Confluent Kafka 6.2.14 + Zookeeper, ch6-2·6-3 kafka-exporter·Prometheus·Grafana(Docker), ch8-1·ch9-3 spark01~03 Yarn + HDFS (`docs/study/datastream-index.md`). 강의와 다르게 구성하면 주석에 이유를 적는다
+- Airflow(Day 7, 후순위)는 강의 02-2(공식 docker-compose), 16-2(CeleryExecutor) 기반으로 구성한다. 공식 파일에서 바꾼 부분마다 주석으로 이유를 적는다
 - 모든 설정값(메모리, 포트, retention, scrape 주기)에 근거 주석을 단다. 인스턴스 사양을 고려한다
 - 비밀값은 `.env.example`에 키 이름만 적고 실제 값은 사용자가 서버에서 채운다
 - 보안그룹에 필요한 포트를 표로 정리한다. `0.0.0.0/0` 개방은 제안하지 않는다

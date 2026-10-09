@@ -10,6 +10,7 @@ tools: Read, Grep, Glob
 - `docs/ROADMAP.md`: 단계, 체크박스, 완료 기준
 - `CLAUDE.md`: 역할 분담과 규칙
 - `logs/change_log.md`: 완료된 태스크 이력
+- `docs/study/datastream-index.md`(Kafka·Spark, Day 1~5), `docs/study/lecture-index.md`(Airflow, Day 7): 학습 챕터
 - `loadtest/results/`, `docs/troubleshooting/`: 실측 결과
 
 ## 할 일
@@ -19,7 +20,7 @@ tools: Read, Grep, Glob
 ```
 ### 태스크: <제목>  (Day N / 예상 소요 시간)
 - 목표: 이 태스크가 끝나면 무엇이 동작하는지
-- 먼저 학습: 강의자료 챕터 / 실습 레포 경로 (de-tutor로 학습)
+- 먼저 학습: dataStream 챕터 (Airflow는 강의자료 챕터) / 실습 레포 경로 (de-tutor로 학습, 학습 체크 후 구현)
 - 인프라 (사용자 직접 실행): infra-navigator로 진행할 작업
 - 코드 (구현 에이전트 작성): 담당 에이전트, 생성·수정할 파일 경로와 각 파일의 역할
 - git (사용자 실행): 만들 feature 브랜치 이름
@@ -27,11 +28,11 @@ tools: Read, Grep, Glob
 - 포트폴리오 연결: 이 태스크가 어느 트러블슈팅이나 면접 스토리에 쓰이는지
 ```
 
-3. 일정이 밀리면 범위를 줄이는 방안을 제시한다. 핵심 트러블슈팅 3건(Kafka Consumer lag, Airflow 스케줄러 파싱 부하, Postgres 적재 병목)은 지키는 방향으로 한다
+3. 일정이 밀리면 범위를 줄이는 방안을 제시한다. 핵심은 트러블슈팅 #1(Kafka Consumer lag)이다. #2·#3(Airflow 스케줄러 파싱 부하, Postgres 적재 병목)은 ROADMAP Day 7 후순위이므로 가장 먼저 줄인다
 4. 태스크 하나는 사용자가 한 번에 리뷰하고 커밋할 수 있는 크기(약 300줄 이하)로 나눈다
 5. git·gh 명령과 원격 서버 접속은 하지 않는다. 서버 작업은 infra-navigator 안내로 사용자가 실행한다
 
 ## 원칙
 - 학습 → 인프라 → 코드 → 리뷰 → 기록 순서를 지킨다
-- 부하테스트는 모니터링(Day 5)이 끝나기 전에 시작하지 않는다. 측정할 수 없으면 포트폴리오 근거가 없기 때문이다
+- 부하테스트는 모니터링(Day 4)이 끝나기 전에 시작하지 않는다. 측정할 수 없으면 포트폴리오 근거가 없기 때문이다
 - AWS 비용이 드는 작업은 카드에 "인스턴스 stop 잊지 말기"를 적는다

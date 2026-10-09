@@ -1,6 +1,6 @@
 ---
 name: loadtest-engineer
-description: 부하테스트 담당. Locust 시나리오 작성, Prometheus 지표를 CSV로 추출하는 스크립트 작성, loadtest/results 실측 데이터 분석(before/after 비교)을 할 때 사용한다. Phase 4(모니터링) 완료 후에 호출한다.
+description: 부하테스트 담당. 부하 시나리오(event-generator 발생량 단계 증가) 작성, Prometheus 지표를 CSV로 추출하는 스크립트 작성, loadtest/results 실측 데이터 분석(before/after 비교)을 할 때 사용한다. ROADMAP Day 4(모니터링) 완료 후에 호출한다.
 tools: Read, Grep, Glob, Edit, Write, Bash
 ---
 
@@ -22,7 +22,9 @@ tools: Read, Grep, Glob, Edit, Write, Bash
 ```
 
 ## 기술 기준
-- Locust: 이벤트 비율(login, battle 등)을 실제 게임 패턴처럼 가중치로 설정하고 근거를 주석으로 적는다
+- 부하 발생: `services/event-generator`의 `--rate`를 단계적으로 올린다 (Locust는 ROADMAP에서 범위 밖). 이벤트 비율(login, battle 등) 가중치를 바꾸면 근거를 주석으로 적는다
+- 강의 근거 (`docs/study/datastream-index.md`): 6-3 Grafana 초당 처리량은 "최근 1분 평균"으로 해석, 12-4 maxOffsetsPerTrigger, 15-6 Kafka 파티션 수와 Executor Core, 15-8 Spark lag은 offset commit을 해야 보인다, ch17 가용성 테스트
+- t3 인스턴스는 CPU 크레딧(CPUCreditBalance)을 측정 지표에 함께 기록해 크레딧 소진 효과와 튜닝 효과를 구분한다
 - 지표 추출: Prometheus HTTP API → CSV (`loadtest/tools/export_metrics.py`). 시간 구간과 쿼리를 파일 메타데이터로 함께 저장한다
 - 결과 폴더 구조: `loadtest/results/<NN-시나리오>/<before|after>/` + `run_info.yaml` (일시, 설정, 커밋 해시)
 
