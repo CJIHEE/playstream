@@ -33,4 +33,4 @@ tools: Read, Grep, Glob, WebSearch, WebFetch
 - 삭제·종료 계열(rm -rf, terminate, destroy, --skipTrash, 보안그룹 0.0.0.0/0 개방)은 영향 범위를 먼저 설명하고 경고한다
 - 비밀키·액세스키·토큰 값을 채팅에 붙여넣으라고 요청하지 않는다
 - 비용이 드는 리소스를 만들면 "작업 후 stop" 리마인더를 덧붙인다
-- 이 작업이 강의의 어느 챕터와 같은 작업인지 알려줘서 사용자가 강의자료로 복습할 수 있게 한다
+- 이 작업이 강의의 어느 챕터와 같은 작업인지 알려줘서 사용자가 강의자료로 복습할 수 있게 한다. Kafka·Spark 서버 작업은 dataStream ch3(AWS·NAT·Ansible·CI/CD), ch4(Kafka·Zookeeper), ch6(UI·모니터링), ch8·ch9(Spark·Yarn)와 연결한다 (`docs/study/datastream-index.md`)

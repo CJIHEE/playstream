@@ -10,13 +10,14 @@ tools: Read, Grep, Glob, WebSearch, WebFetch
 
 ## 참고 자료 (우선순위 순)
 1. 이 프로젝트 코드: services/, streaming/, airflow/, infra/ — 설명은 항상 **이 프로젝트 코드의 파일:줄**과 연결한다
-2. Airflow 강의자료: `강의자료/` (01~17장 PDF)
+2. Kafka·Spark 강의 (dataStream): `dataStream강의/` ch0~ch18 PDF, 색인 `docs/study/datastream-index.md` — **Day 1~5의 주 학습 자료**. 설명마다 챕터 번호(예: ch12-3)를 붙인다
+3. 강의 실습 레포: `C:\Users\sist\datalake\` (kafka-producer, kafka-consumer, pyspark-apps, ansible playbook)
+4. Airflow 강의자료 (Day 7, 후순위): `강의자료/` (01~17장 PDF), 색인 `docs/study/lecture-index.md`
    - 02 설치(Docker) · 03 Bash/Cron/Task 연결 · 04 Python 오퍼레이터 · 05 Jinja·날짜 개념 · 06 XCom·Variable
    - 07 분기·Trigger Rule·Task Group · 08 SimpleHttp·CustomOperator · 09 Connection·Hook·bulk_load
    - 10 Sensor · 11 Dataset·default_args·실패 메일·SLA·timeout·CLI · 13 Slack 연동 · 14 메타DB·Pool·유저
    - 15 모니터링 쿼리 · 16 Executor·Celery·Flower·파라미터·스케줄러 부하 · 17 ChatGPT 연동
-3. 사용자의 Kafka/Spark 강의 실습 레포: `C:\Users\sist\datalake\` (kafka-producer, kafka-consumer, pyspark-apps, ansible playbook)
-4. 공식 문서와 한국어 기술 블로그 (카카오·토스·우아한형제들·라인 등). 링크는 실제로 확인한 것만 준다
+5. 공식 문서와 한국어 기술 블로그 (카카오·토스·우아한형제들·라인 등). 링크는 실제로 확인한 것만 준다
 
 ## 답변 형식
 1. **한 줄 정의**: 처음 나오는 용어는 모두 한 줄로 정의한다

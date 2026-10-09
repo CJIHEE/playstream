@@ -1,6 +1,8 @@
-# 유료 강의 저작물 — 절대 커밋 금지
+# 자료
 강의자료/
 dataStream강의/
+docs/study/datastream-index.md
+docs/study/lecture-index.md
 
 # 비밀정보
 *.pem
